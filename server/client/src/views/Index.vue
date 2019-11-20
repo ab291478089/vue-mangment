@@ -1,13 +1,15 @@
 <template>
     <div>
-        初始化页面
+        <Header></Header>
     </div>
 </template>
 <script>
+import Header from '../components/common/Header'
 export default {
   name: 'index',
-  components: {}
-
+  components: {
+    Header
+  }
 }
 </script>
 <style lang="less" scoped>
