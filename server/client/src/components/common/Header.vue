@@ -1,5 +1,6 @@
 <template>
-  <header class="header-nav">
+<div class="header-nav">
+  <header >
     <el-row>
       <el-col :span="6">
         <i class="iconfont icon-logo-cat icon-cat" />
@@ -31,6 +32,7 @@
       </el-col>
     </el-row>
   </header>
+  </div>
 </template>
 <script>
 export default {
@@ -52,7 +54,7 @@ export default {
        } 
     },
     showInfoList() {
-
+      this.$router.push('/infoShow')
     },
     //退出
     logout() {
