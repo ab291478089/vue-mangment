@@ -61,7 +61,7 @@ router.post('/login', (req,res) => {
                         if(isMatch) {
                          //token 规则
                          const rule = {id:user.id, name:user.name, avatar:user.avatar, identity:user.identity}
-                         jwt.sign(rule, keys.secretOrKey, {expiresIn: 10}, (err,token) => {
+                         jwt.sign(rule, keys.secretOrKey, {expiresIn: 3600}, (err,token) => {
                              if(err) throw err
                              res.json({err:isMatch, msg:'登陆成功!', token:"Bearer " + token})
                          });
