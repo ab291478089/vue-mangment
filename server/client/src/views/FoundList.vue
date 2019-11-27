@@ -6,7 +6,7 @@
           <el-button type="primary" size="small" icon="view" @click="handleAdd()">添加</el-button>
         </el-form-item>
       </el-form>
-      <Dialog :dialog="dialog"></Dialog>
+      <Dialog :dialog="dialog" @getDialog="getDialog" @getTablesList="getTablesList"></Dialog>
     </div>
     <el-table
       v-if="tableData.length > 0"
@@ -92,9 +92,7 @@ export default {
   data() {
     return {
       tableData: [],
-      dialog: {
-        show: false
-      }
+      dialog: false //弹框
     };
   },
   methods: {
@@ -105,7 +103,7 @@ export default {
     },
     // 添加
     handleAdd() {
-      this.dialog.show = true
+      this.dialog = true
     },
     //获取数据
     getTableList() {
@@ -120,6 +118,14 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
+    },
+    // 修改子组件的状态值
+    getDialog() {
+      this.dialog = false
+    },
+    //获取子组件的 列表并更新
+    getTablesList(data) {
+      this.tableData = data
     }
   }
 };
