@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dialog title="添加资金信息" :visible.sync="dialog" width="30%">
+    <el-dialog title="添加资金信息" :visible="dialog" @close="close" width="30%">
       <el-form
         :model="ruleForm"
         status-icon
@@ -127,24 +127,17 @@ export default {
           .then( res => {
             console.log (res)
             if(res.status === 200) {
-              this.$emit("getDialog");
-              this.$axios.get('/api/profiles')
-              .then( res => {
-                console.log("get",res)
-                if(res.status === 200 ) {
-                  const tableList = res.data.success
-                  this.$emit('getTablesList', tableList)
-                }
-              })
-            }
-             
+              this.$emit("getTablesList");
+            } 
           })
-         
         } else {
           console.log("error submit!!");
           return false;
         }
       });
+    },
+    close() {
+      this.$emit("getDialog")
     }
   }
 };

@@ -114,7 +114,7 @@ export default {
       });
     },
     handleEdit(index, row) {
-      console.log(index, row);
+      this.dialog = true
     },
     handleDelete(index, row) {
       console.log(index, row);
@@ -125,7 +125,11 @@ export default {
     },
     //获取子组件的 列表并更新
     getTablesList(data) {
-      this.tableData = data
+       this.dialog = false
+       this.$axios.get("/api/profiles")
+      .then( res => {
+        this.tableData = res.data.success;
+      })
     }
   }
 };
@@ -139,6 +143,9 @@ export default {
   padding:50px;
   .btnRight{
     float: right;
+    position: absolute;
+    right: 0;
+    top: 80px;
   }
   .table-box {
   margin-left: 180px;
